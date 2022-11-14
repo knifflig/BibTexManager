@@ -1,0 +1,267 @@
+/* || General settings */
+/* Box sizing rules */
+* {
+    box-sizing: border-box;
+}
+
+/* || Fonts */
+@font-face {
+    font-family: 'Latin Modern';
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+    src: url('./fonts/LM-regular.woff2') format('woff2'),
+    url('./fonts/LM-regular.woff') format('woff'),
+    url('./fonts/LM-regular.ttf') format('truetype');
+}
+
+/* || General styles */
+/* page style */
+:root {
+    --body-color: hsl(0, 5%, 10%);
+    --body-bg-color: hsl(210, 20%, 98%);
+    --link-visited: hsl(0, 100%, 33%);
+    --link-focus-outline: hsl(220, 90%, 52%);
+    --pre-bg-color: hsl(210, 28%, 93%);
+    --kbd-bg-color: hsl(210, 5%, 100%);
+    --kbd-border-color: hsl(210, 5%, 70%);
+    --table-border-color: black;
+    --sidenote-target-border-color: hsl(55, 55%, 70%);
+    --footnotes-border-color: hsl(0, 0%, 39%);
+    font-size: 1rem;
+}
+
+/* basic styles */
+body {
+    font-family: 'Latin Modern', Georgia, Cambria, 'Times New Roman', Times, serif;
+    line-height: 1.8;
+
+    padding: 1px 10px 1px 10px;
+    overflow-x: auto;
+
+    counter-reset: theorem definition sidenote-counter;
+
+    color: var(--body-color);
+    /*background-color: var(--body-bg-color);*/
+    background-color: white;
+
+    text-rendering: optimizeLegibility;
+}
+
+header {
+
+    position: absolute;
+    top: 1px;
+    left: 50%;
+    transform: translate(-50%);
+
+}
+
+/* Better tables */
+table {
+    font-size: 1vw;
+
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    max-width: 100%;
+    border-top: 2.27px solid var(--table-border-color);
+    border-bottom: 2.27px solid var(--table-border-color);
+    /* display: block; */
+    overflow-x: hidden; /* does not work because element is not block */
+    /* white-space: nowrap; */
+    counter-increment: caption;
+}
+/* add bottom border on column table headings  */
+table tr > th[scope='col'] {
+    border-bottom: 1.36px solid var(--table-border-color);
+}
+/* add right border on row table headings  */
+table tr > th[scope='row'] {
+    border-right: 1.36px solid var(--table-border-color);
+}
+table > tbody > tr:first-child > td,
+table > tbody > tr:first-child > th {
+    border-top: 1.36px solid var(--table-border-color);
+}
+table > tbody > tr:last-child > td,
+table > tbody > tr:last-child > th {
+    border-bottom: 1.36px solid var(--table-border-color);
+}
+
+select {
+/ / styles reset, including removing the default dropdown arrow appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background: grey;
+
+    margin: 20px;
+    padding: 0.25em 0.5em;
+
+
+    font-family: inherit;
+    font-size: 1.25rem;
+
+
+}
+
+
+/* Table caption */
+caption {
+    text-align: left;
+    font-size: 1.423em;
+    font-weight: bold;
+    /* border-bottom: 2pt solid #000; */
+    padding: 0 0.25em 0.25em;
+    width: 100%;
+    margin-left: 0;
+}
+
+/* || Custom styles */
+.container {
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-flow: column wrap;
+    gap: 5px;
+
+    background: white;
+    border-radius: 10px;
+    z-index: 4;
+
+    /*border: 1px solid black;*/
+    padding: 5px;
+
+    font-family: inherit;
+    text-align: center;
+}
+
+.container-main {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 90%;
+}
+
+.container-table {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 100%;
+    z-index: 1;
+}
+
+.container-row {
+    flex-direction: row;
+    flex-flow: row wrap;
+}
+
+
+.container_item {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px 10px;
+
+    text-align: center;
+    font-size: 1.5vw;
+    font-family: inherit;
+}
+
+.container-seed {
+    display: none
+}
+
+.container_item-btn {
+    width: 15em;
+}
+
+.container_item-doi {
+    width: 35em;
+}
+
+.container_item-project {
+    width: 50em;
+}
+
+.form_popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: none;
+
+    min-height: 50%;
+    width: 90%;
+
+    border: 5px solid black;
+    background: white;
+    border-radius: 10px;
+
+    font-family: inherit;
+    text-align: center;
+    font-size: 1vw;
+
+    z-index: 9;
+}
+
+.form_container>input {
+
+    display: inline-flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-flow: row wrap;
+
+    width: auto;
+    min-width: 400px;
+
+    /*border: 1px solid black;*/
+    border-radius: 10px;
+    padding: 5px 10px;
+
+    text-align: center;
+    font-size: 2vh;
+    font-family: inherit;
+}
+
+
+.form_btn {
+    width: auto;
+    background: grey;
+
+    margin: 20px;
+
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px 10px;
+
+    text-align: center;
+    font-size: 2vh;
+    font-family: inherit;
+}
+
+/*input style*/
+.form_container input[type=text],
+.form_container input[type=number] {
+    font-family: inherit;
+
+
+}
+
+/*greyscale for selected fields}*/
+.form_container input[type=text]:focus,
+.form_container input[type=number]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+

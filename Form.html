@@ -1,0 +1,32 @@
+<form action="post_redirect_get.php" method="post">
+    <input id="proj_name_form" type="hidden" name="project" value="No Project">
+    <div>
+        <label for="type"></label>
+        <select id="type" name="type" required>
+            <option value="article">Article</option>
+            <option value="book">Book</option>
+            <option value="inbook">Inbook</option>
+        </select>
+    </div>
+    <div class="form_container">
+        <label for="author"></label><input type="text" id="author" placeholder="Author" name="author" value="" required>
+        <label for="title"></label><input type="text" id="title" placeholder="Title" name="title" value="" required>
+        <label for="year"></label><input type="text" id="year" placeholder="Year" name="year" value="" required>
+        <label for="month"></label><input type="text" id="month" placeholder="Month" name="month" value="">
+        <label for="journal"></label><input type="text" id="journal" placeholder="Journal" name="journal" value="" required>
+        <label for="volume"></label><input type="text" id="volume" placeholder="Volume" name="volume" value="">
+        <label for="issue"></label><input type="text" id="issue" placeholder="Number" name="number" value="">
+        <label for="publisher"></label><input type="text" id="publisher" placeholder="Publisher" name="publisher" value="">
+        <label for="chapter"></label><input type="text" id="chapter" placeholder="Chapter" name="chapter">
+        <label for="pages"></label><input type="text" id="pages" placeholder="Pages" name="pages" value="">
+        <label for="edition"></label><input type="text" id="edition" placeholder="Edition" name="edition">
+        <label for="doi"></label><input type="text" id="doi" placeholder="DOI" name="doi" value="">
+        <label for="ISSN"></label><input type="text" id="ISSN" placeholder="ISSN" name="ISSN">
+        <label for="isbn"></label><input type="text" id="isbn" placeholder="ISBN" name="isbn">
+        <label for="note"></label><input type="text" id="note" placeholder="Note" name="note">
+    </div>
+    <footer>
+        <button class="form_btn" type="submit" >Send</button>
+        <button class="form_btn" type="button" onclick="closeForm()">Close</button>
+    </footer>
+</form>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BibTexManager</title>
+    <link rel="stylesheet" href="/css/lit-manager.css?v=3">
+</head>
+<body>
+<header id="header"><h1><a href="index.html">BibTexManager</a></h1></header>
+<nav></nav>
+<div class="container container-main">
+    <div class="container">
+        <div class="container">
+            <form action="post_redirect_get.php" method="post">
+                <label for="project"></label>
+                <input class="container_item container_item-project" type="text" id="project" name="project" placeholder="create or load Project" required/>
+            </form>
+        </div>
+        <div class="container container-seed">
+            <div class="container_item item-header"><strong>Seed</strong></div>
+            <div class="container_item item-content">123456789123456789</div>
+        </div>
+        <div class="container container-row" id="new_entry">
+            <button class="container_item container_item-btn" onclick="openForm()"><strong>New entry</strong></button>
+            <form action="post_redirect_get.php" method="post">
+                <label for="doi_input"></label>
+                <input class="container_item container_item-doi" type="text" id="doi_input" name="doi_input" placeholder="or search by doi (full link only)" value="https://doi.org/10.1017/S0007123422000175" required/>
+            </form>
+        </div>
+    </div>
+    <div class="container container-table">
+        <table class="table">
+            <caption id="table_head">No Project</caption>
+            <thead>
+            <tr>
+                <th>Author</th>
+                <th>Title</th>
+                <th>Journal</th>
+                <th>Year</th>
+                <th>DOI</th>
+            </tr>
+            </thead>
+            <tbody id="table">
+            </tbody>
+        </table>
+    </div>
+</div>
+<div>
+    <div class="form_popup" id="form_popup">
+    </div>
+</div>
+<footer></footer>
+</body>
+
+
+<script type="text/javascript" src="js/BibTexManager_services.js"></script>
+<script>
+    if (findGetParameter("project") !== null) {
+        //document.cookie = 'project='+findGetParameter('project')
+        changeElement("table_head", findGetParameter("project"));
+        changeElement("table", getCookie('table'))
+    }
+    else {
+        console.log("Hide Entry Buttons")
+        hideElement("new_entry");
+        document.cookie = "project=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "table=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+    }
+    if (findGetParameter("doi") !== null) {
+        request(findGetParameter("doi"))
+        openForm()
+    }
+
+
+
+</script>
+
+</html>
